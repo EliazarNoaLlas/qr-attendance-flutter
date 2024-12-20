@@ -1,0 +1,43 @@
+name: qr_attendance_app
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  barcode_scan2: ^4.1.6 # Mantener la versión más actualizada y segura
+  qr_flutter: ^4.1.0
+  path_provider: ^2.0.11
+  http: ^1.2.2 # Última versión compatible
+  fluttertoast: ^8.2.1
+  intl: ^0.19.0 # Última versión compatible
+  flutter_svg: ^2.0.10+1 # Última versión compatible
+  percent_indicator: ^4.2.2+2
+  cupertino_icons: ^1.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/home.svg
+    - assets/home.jpg
+    - assets/home.png
+    - assets/student.svg
+    - assets/stud_log.svg
+    - assets/admin_login.svg
+    - assets/classbuilder.svg
+    - assets/studentqr.svg
+    - assets/phone.svg
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/Poppins-Medium.ttf

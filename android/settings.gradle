@@ -1,0 +1,28 @@
+// Incluye el módulo principal del proyecto
+include ':app'
+
+def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
+
+// Cargar los plugins de Flutter desde el archivo .flutter-plugins
+def plugins = new Properties()
+def pluginsFile = new File(flutterProjectRoot.toFile(), '.flutter-plugins')
+
+// Verificar si el archivo de plugins existe antes de intentar leerlo
+if (pluginsFile.exists()) {
+    pluginsFile.withReader('UTF-8') { reader ->
+        plugins.load(reader)
+    }
+} else {
+    println "No se encontró el archivo .flutter-plugins"
+}
+
+// Incluir cada plugin en el proyecto si el archivo fue cargado correctamente
+plugins.each { name, path ->
+    def pluginDirectory = flutterProjectRoot.resolve(path).resolve('android').toFile()
+    if (pluginDirectory.exists()) {
+        include ":$name"
+        project(":$name").projectDir = pluginDirectory
+    } else {
+        println "Directorio del plugin $name no encontrado en la ruta $pluginDirectory"
+    }
+}
